@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\mvp15\\OneDrive\\Documents\\Coding\\Libraries\\GitSubprocessClient\\GitSubprocessClient.jar",
+        "c:\\Users\\mvp15\\OneDrive\\Documents\\Coding\\Libraries\\GitHubApiClient\\GitHubApiClient.jar"
+    ]
+}
