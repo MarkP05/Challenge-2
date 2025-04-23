@@ -6,9 +6,9 @@ import github.tools.responseObjects.GetRepoInfoResponse;
 
 public class Function {
     public static void main(String[] args) {
-        // GitHubApiClient gitHubApiClient = new GitHubApiClient(user, token);
-        // GetRepoInfoResponse repoInfo = gitHubApiClient.getRepoInfo("CSC109", "GitHubApiClient");
-        // System.out.println(repoInfo.getDescription());
+        GitHubApiClient gitHubApiClient = new GitHubApiClient(user, token);
+        GetRepoInfoResponse repoInfo = gitHubApiClient.getRepoInfo("CSC109", "GitHubApiClient");
+        System.out.println(repoInfo.getDescription());
 
         String repoPath = "C:/Users/Rei/Documents/Homepage/colleg year 1/2-CSC109/week 12/Challenge-2";
 
