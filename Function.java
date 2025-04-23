@@ -6,8 +6,6 @@ import github.tools.responseObjects.GetRepoInfoResponse;
 
 public class Function {
     public void main2(String repoPath) {
-        String user = "dotrei";
-        String token = ;
         GitHubApiClient gitHubApiClient = new GitHubApiClient(user, token);
         GetRepoInfoResponse repoInfo = gitHubApiClient.getRepoInfo("CSC109", "GitHubApiClient");
         System.out.println(repoInfo.getDescription());
