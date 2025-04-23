@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,6 +11,8 @@ import javax.swing.WindowConstants;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
         JFrame frame = new JFrame("QBay App");
         frame.setSize(800,600);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +50,9 @@ public class Main {
                 submitButton.addActionListener(new ActionListener(){
         
                 public void actionPerformed(ActionEvent e){
+                    String repoPath = input.nextLine();
+                    //return repoPath;
+                    System.err.println("Sucess!");
                     System.out.println("You clicked the button!");
                     projectpathfield.setText("Goodbye!");
                 }
