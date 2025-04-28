@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
+
         JFrame frame = new JFrame("QBay App");
         frame.setSize(800,600);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -50,8 +51,17 @@ public class Main {
                 submitButton.addActionListener(new ActionListener(){
         
                 public void actionPerformed(ActionEvent e){
-                    String repoPath = input.nextLine();
+                    //String repoPath = input.nextLine();
+                    String repoPath = "repoPath";
                     //return repoPath;
+                    String repoName = "NewRepo";
+
+                    String userName = "dotrei";
+
+                    String token = "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";
+
+                    Function.createRepo(userName, repoName, token);
+
                     System.err.println("Sucess!");
                     System.out.println("You clicked the button!");
                     projectpathfield.setText("Goodbye!");
