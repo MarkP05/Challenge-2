@@ -11,7 +11,7 @@ public class Function {
         // System.out.println(repoInfo.getDescription());
 
         String repoPath = "C:/Users/Rei/Documents/Homepage/colleg year 1/2-CSC109/week 12/Challenge-2";
-
+        System.out.println("HI");
         //GitSubprocessClient gitSubprocessClient = new GitSubprocessClient(repoPath);
 
 

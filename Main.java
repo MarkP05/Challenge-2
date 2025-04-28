@@ -47,8 +47,12 @@ public class Main {
                 submitButton.addActionListener(new ActionListener(){
         
                 public void actionPerformed(ActionEvent e){
-                    System.out.println("You clicked the button!");
-                    projectpathfield.setText("Goodbye!");
+                    System.out.println(projectpathfield.getText());
+                    System.out.println(tokenfield.getText());
+                    String projecttextSubmitted = projectpathfield.getText();
+                    String tokenfieldtextSubmitted = tokenfield.getText();
+                    
+                    
                 }
                 });
                 mainPanel.add(submitButton);
