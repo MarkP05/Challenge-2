@@ -1,12 +1,15 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -39,6 +42,11 @@ public class Main {
         JTextField tokenfield = new JTextField();
         tokenfield.setBounds(330, 230, 175, 50);
         mainPanel.add(tokenfield);
+
+        LogoPanel logoPanel = new LogoPanel();
+        logoPanel.setSize(200,200);
+        logoPanel.setLocation(310,50);
+        mainPanel.add(logoPanel, BorderLayout.CENTER);
         
                 JButton submitButton = new JButton("Submit");
                 submitButton.setSize(100,50);
@@ -47,8 +55,10 @@ public class Main {
                 submitButton.addActionListener(new ActionListener(){
         
                 public void actionPerformed(ActionEvent e){
-                    System.out.println("You clicked the button!");
-                    projectpathfield.setText("Goodbye!");
+                    System.out.println(projectpathfield.getText());
+                    System.out.println(tokenfield.getText());
+                    String projecttextSubmitted = projectpathfield.getText();
+                    String tokenfieldtextSubmitted = tokenfield.getText();
                 }
                 });
                 mainPanel.add(submitButton);
