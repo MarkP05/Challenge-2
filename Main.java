@@ -1,5 +1,5 @@
-import java.awt.Color;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -31,14 +31,24 @@ public class Main {
         projectpathfield.setBounds(330, 155, 175, 50);
         mainPanel.add(projectpathfield);
 
+        JLabel repoLabel = new JLabel("Repo Name:");
+        repoLabel.setSize(500,500);
+        repoLabel.setLocation(230,-5);
+        repoLabel.setForeground(Color.white);
+        mainPanel.add(repoLabel);
+
+        JTextField repofield = new JTextField();
+        repofield.setBounds(330, 220, 175, 50);
+        mainPanel.add(repofield);
+
         JLabel tokenLabel = new JLabel("Token:");
         tokenLabel.setSize(500,500);
-        tokenLabel.setLocation(230,5);
+        tokenLabel.setLocation(230,55);
         tokenLabel.setForeground(Color.white);
         mainPanel.add(tokenLabel);
 
         JTextField tokenfield = new JTextField();
-        tokenfield.setBounds(330, 230, 175, 50);
+        tokenfield.setBounds(330, 280, 175, 50);
         mainPanel.add(tokenfield);
 
         LogoPanel logoPanel = new LogoPanel();
@@ -46,17 +56,19 @@ public class Main {
         logoPanel.setLocation(310,50);
         mainPanel.add(logoPanel, BorderLayout.CENTER);
         
-                JButton submitButton = new JButton("Submit");
-                submitButton.setSize(100,50);
-                submitButton.setLocation(345,345);
+        JButton submitButton = new JButton("Submit");
+        submitButton.setSize(100,50);
+        submitButton.setLocation(345,345);
         
                 submitButton.addActionListener(new ActionListener(){
         
                 public void actionPerformed(ActionEvent e){
                     System.out.println(projectpathfield.getText());
                     System.out.println(tokenfield.getText());
+                    System.out.println(repofield.getText());
                     String projecttextSubmitted = projectpathfield.getText();
                     String tokenfieldtextSubmitted = tokenfield.getText();
+                    String repotextSubmitted = repofield.getText();
                     
                     
                 }
