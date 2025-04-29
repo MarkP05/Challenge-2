@@ -2,6 +2,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -69,8 +73,8 @@ public class Main {
                     String projecttextSubmitted = projectpathfield.getText();
                     String tokenfieldtextSubmitted = tokenfield.getText();
                     String repotextSubmitted = repofield.getText();
-                    
-                    
+                    createLocalRepo(repofield.getText(), projectpathfield.getText());
+                    createGitHubRepo();
                 }
                 });
                 mainPanel.add(submitButton);
@@ -85,5 +89,41 @@ public class Main {
             private static void add(JTextField projectpathfield) {
                 // TODO Auto-generated method stub
                 throw new UnsupportedOperationException("Unimplemented method 'add'");
+            }
+
+            //Mock example of Created Repo
+            public static void createGitHubRepo(){
+                System.out.println("Repo Created.");
+            }
+
+            public static void createReadMe(String t, String p){
+                String title = "# "+t;
+                try (FileWriter fW = new FileWriter(new File(p, "README.md"))) {
+                    fW.write(title);
+                    System.out.println("README.md has been created.");
+                } 
+                catch (IOException e) {
+                    System.out.println("ERROR: "+e.getMessage());
+                }
+            }
+
+            public static void createLocalRepo(String name, String path){
+                File project = new File(path, name);
+
+                if(!project.exists()){
+                    project.mkdirs();
+                }
+                
+                createReadMe(name, path);
+
+                try{
+                    ProcessBuilder build = new ProcessBuilder("git", "init");
+                    build.directory(project);
+                    Process p = build.start();
+                    System.out.println("Git init made in "+project.getAbsolutePath());
+                }
+                catch (IOException e){
+                    System.out.println("ERROR: "+e.getMessage());
+                }
             }
 }
