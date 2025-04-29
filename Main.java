@@ -56,9 +56,9 @@ public class Main {
                     //return repoPath;
                     String repoName = "NewRepo";
 
-                    String userName = "dotrei";
+                    String userName = "name";
 
-                    String token = "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";
+                    String token = "token";
 
                     Function.createRepo(userName, repoName, token);
 
