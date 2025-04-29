@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -39,6 +40,11 @@ public class Main {
         JTextField tokenfield = new JTextField();
         tokenfield.setBounds(330, 230, 175, 50);
         mainPanel.add(tokenfield);
+
+        LogoPanel logoPanel = new LogoPanel();
+        logoPanel.setSize(200,200);
+        logoPanel.setLocation(310,50);
+        mainPanel.add(logoPanel, BorderLayout.CENTER);
         
                 JButton submitButton = new JButton("Submit");
                 submitButton.setSize(100,50);
