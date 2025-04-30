@@ -77,99 +77,106 @@ public class Main {
         submitButton.setSize(100,50);
         submitButton.setLocation(345,400);
         
-                submitButton.addActionListener(new ActionListener(){
-        
-                public void actionPerformed(ActionEvent e){
-                    System.err.println("Sucess!");
-                    System.err.println("You clicked the button!");
+        submitButton.addActionListener(new ActionListener(){
+
+            public void actionPerformed(ActionEvent e){
+                try {
+                    System.err.println("Success!");
+                    System.out.println("You clicked the button!");
                     System.out.println(projectpathfield.getText());
                     System.out.println(repofield.getText());
-                    //System.out.println(tokenfield.getText());
-                    String repoPath = projectpathfield.getText();
+                    System.out.println(tokenfield.getText());
+                    String repoPath = projectpathfield.getText(); // Local file path
                     String repoName = repofield.getText();
                     String userName = userfield.getText();
                     String token = tokenfield.getText();
-                    String url = "https://github.com/" + userName + "/" + repoName;
-                    projectpathfield.setText(url);
-                    createLocalRepo(repofield.getText(), projectpathfield.getText());
-                    //createGitHubRepo();
 
+                    // Create the local repository
+                    createLocalRepo(repoName, repoPath);
+
+                    // Create the GitHub repository
                     Function.createRepo(repoPath, repoName, userName, token);
+
+                    System.out.println("Repository successfully created locally and on GitHub.");
+                } catch (Exception ex) {
+                    System.err.println("An error occurred: " + ex.getMessage());
+                    ex.printStackTrace();
                 }
-                });
-                mainPanel.add(submitButton);
+            }
+        });
+        mainPanel.add(submitButton);
         
-                frame.setContentPane(mainPanel);
+        frame.setContentPane(mainPanel);
         
-                frame.setVisible(true);
+        frame.setVisible(true);
         
                 
-            }
+    }
         
-            private static void add(JTextField projectpathfield) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'add'");
-            }
+    private static void add(JTextField projectpathfield) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'add'");
+    }
 
-            //Mock example of Created Repo
-            // public static void createGitHubRepo(){
-            //     System.out.println("Repo Created.");
-            // }
+    //Mock example of Created Repo
+    // public static void createGitHubRepo(){
+    //     System.out.println("Repo Created.");
+    // }
 
-            public static void createReadMe(String userName, String repoPath) {
-                File readme = new File(repoPath, "README.md");
-                String title = "# " + userName;
-                try (FileWriter fW = new FileWriter(readme)) {
-                    fW.write(title);
-                    System.out.println("README.md has been created.");
-                } catch (IOException e) {
-                    System.out.println("ERROR: " + e.getMessage());
-                }
-            }
+    public static void createReadMe(String userName, String repoPath) {
+        File readme = new File(repoPath, "README.md");
+        String title = "# " + userName;
+        try (FileWriter fW = new FileWriter(readme)) {
+            fW.write(title);
+            System.out.println("README.md has been created.");
+        } catch (IOException e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
+    }
 
-            public static void createGitIgnore(String repoPath) {
-                File gitIgnore = new File(repoPath, ".gitignore");
-                try (FileWriter fW = new FileWriter(gitIgnore)) {
-                    fW.write("*.log\n");
-                    fW.write("*.tmp\n");
-                    fW.write("node_modules/\n");
-                    fW.write("dist/\n");
-                    fW.write(".env\n");
-                    System.out.println(".gitignore has been created.");
-                } catch (IOException e) {
-                    System.out.println("ERROR: " + e.getMessage());
-                }
-            }
+    public static void createGitIgnore(String repoPath) {
+        File gitIgnore = new File(repoPath, ".gitignore");
+        try (FileWriter fW = new FileWriter(gitIgnore)) {
+            fW.write("*.log\n");
+            fW.write("*.tmp\n");
+            fW.write("node_modules/\n");
+            fW.write("dist/\n");
+            fW.write(".env\n");
+            System.out.println(".gitignore has been created.");
+        } catch (IOException e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
+    }
 
-            public static void createLocalRepo(String userName, String repoPath) {
-                File project = new File(repoPath, userName);
+    public static void createLocalRepo(String userName, String repoPath) {
+        File project = new File(repoPath, userName);
 
-                if (!project.exists()) {
-                    project.mkdirs();
-                }
+        if (!project.exists()) {
+            project.mkdirs();
+        }
 
-                String projectPath = project.getAbsolutePath();
-                createReadMe(userName, repoPath);
-                createGitIgnore(repoPath);
+        String projectPath = project.getAbsolutePath(); // Get the full path to the repository folder
+        createReadMe(userName, projectPath); // Pass the full repository folder path
+        createGitIgnore(projectPath);       // Pass the full repository folder path
 
-                try {
-                    ProcessBuilder init = new ProcessBuilder("git", "init");
-                    init.directory(project);
-                    Process p1 = init.start();
-                    p1.waitFor();
-                    System.out.println("Git init made in " + repoPath);
+        try {
+            ProcessBuilder init = new ProcessBuilder("git", "init");
+            init.directory(project);
+            Process p1 = init.start();
+            p1.waitFor();
+            System.out.println("Git init made in " + projectPath);
 
-                    ProcessBuilder add = new ProcessBuilder("git", "add", ".");
-                    add.directory(project);
-                    Process p2 = add.start();
-                    p2.waitFor();
+            ProcessBuilder add = new ProcessBuilder("git", "add", ".");
+            add.directory(project);
+            Process p2 = add.start();
+            p2.waitFor();
 
-                    ProcessBuilder commit = new ProcessBuilder("git", "commit", "-m", "Initial commit");
-                    commit.directory(project);
-                    Process p3 = commit.start();
-                    p3.waitFor();
-                } catch (IOException | InterruptedException e) {
-                    System.out.println("ERROR: " + e.getMessage());
-                }
-            }
+            ProcessBuilder commit = new ProcessBuilder("git", "commit", "-m", "Initial commit");
+            commit.directory(project);
+            Process p3 = commit.start();
+            p3.waitFor();
+        } catch (IOException | InterruptedException e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
+    }
 }
