@@ -81,19 +81,20 @@ public class Main {
         
                 public void actionPerformed(ActionEvent e){
                     System.err.println("Sucess!");
-                    System.out.println("You clicked the button!");
+                    System.err.println("You clicked the button!");
                     System.out.println(projectpathfield.getText());
                     System.out.println(repofield.getText());
-                    System.out.println(tokenfield.getText());
+                    //System.out.println(tokenfield.getText());
                     String repoPath = projectpathfield.getText();
                     String repoName = repofield.getText();
                     String userName = userfield.getText();
                     String token = tokenfield.getText();
-                    projectpathfield.setText("https://github.com/" + userName + "/" + repoName);
+                    String url = "https://github.com/" + userName + "/" + repoName;
+                    projectpathfield.setText(url);
                     createLocalRepo(repofield.getText(), projectpathfield.getText());
-                    createGitHubRepo();
+                    //createGitHubRepo();
 
-                    Function.createRepo(userName, repoName, token);
+                    Function.createRepo(repoPath, repoName, userName, token);
                 }
                 });
                 mainPanel.add(submitButton);
@@ -111,9 +112,9 @@ public class Main {
             }
 
             //Mock example of Created Repo
-            public static void createGitHubRepo(){
-                System.out.println("Repo Created.");
-            }
+            // public static void createGitHubRepo(){
+            //     System.out.println("Repo Created.");
+            // }
 
             public static void createReadMe(String userName, String repoPath) {
                 File readme = new File(repoPath, "README.md");

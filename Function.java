@@ -5,7 +5,7 @@ import github.tools.responseObjects.CreateRepoResponse;
 import github.tools.responseObjects.GetRepoInfoResponse;
 
 public class Function {
-    public static void createRepo(String userName, String repoName, String token) {
+    public static void createRepo(String repoPath, String repoName, String userName, String token) {
         GitHubApiClient gitHubApiClient = new GitHubApiClient(userName, token);
         
         //String repoName = "NewRepo";
@@ -17,12 +17,6 @@ public class Function {
         CreateRepoResponse createRepoResponse = gitHubApiClient.createRepo(requestParams);
         
         //GitSubprocessClient gitSubprocessClient = new GitSubprocessClient(repoPath);
-
-
-        // List<String> lines = Files.readAllLines(Paths.get("WB2EB.txt"));
-        // int randomIndex = (int) (Math.random() * lines.size());
-        // String randomString = lines.get(randomIndex);
-        // int string_counter = randomString.length();
 
     }
 }
