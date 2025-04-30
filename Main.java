@@ -105,33 +105,48 @@ public class Main {
                 System.out.println("Repo Created.");
             }
 
-            public static void createReadMe(String t, String p){
-                String title = "# "+t;
-                try (FileWriter fW = new FileWriter(new File(p, "README.md"))) {
+            public static void createReadMe(String name, String projectPath) {
+                File readme = new File(projectPath, "README.md");
+                String title = "# " + name;
+                try (FileWriter fW = new FileWriter(readme)) {
                     fW.write(title);
                     System.out.println("README.md has been created.");
-                } 
-                catch (IOException e) {
-                    System.out.println("ERROR: "+e.getMessage());
+                } catch (IOException e) {
+                    System.out.println("ERROR: " + e.getMessage());
                 }
             }
 
+            public static void createGitIgnore(String path) {
+                File gitIgnore = new File(path, ".gitignore");
+                try (FileWriter fW = new FileWriter(gitIgnore)) {
+                    fW.write("*.log\n");
+                    fW.write("*.tmp\n");
+                    fW.write("node_modules/\n");
+                    fW.write("dist/\n");
+                    fW.write(".env\n");
+                    System.out.println(".gitignore has been created.");
+                } catch (IOException e) {
+                    System.out.println("ERROR: " + e.getMessage());
+                }
+            }
 
-            public static void createLocalRepo(String name, String path){
+            public static void createLocalRepo(String name, String path) {
                 File project = new File(path, name);
 
-                if(!project.exists()){
+                if (!project.exists()) {
                     project.mkdirs();
                 }
-                
-                createReadMe(name, path);
 
-                try{
+                String projectPath = project.getAbsolutePath();
+                createReadMe(name, projectPath);
+                createGitIgnore(projectPath);
+
+                try {
                     ProcessBuilder init = new ProcessBuilder("git", "init");
                     init.directory(project);
                     Process p1 = init.start();
                     p1.waitFor();
-                    System.out.println("Git init made in "+project.getAbsolutePath());
+                    System.out.println("Git init made in " + projectPath);
 
                     ProcessBuilder add = new ProcessBuilder("git", "add", ".");
                     add.directory(project);
@@ -142,9 +157,8 @@ public class Main {
                     commit.directory(project);
                     Process p3 = commit.start();
                     p3.waitFor();
-                }
-                catch (IOException | InterruptedException e){
-                    System.out.println("ERROR: "+e.getMessage());
+                } catch (IOException | InterruptedException e) {
+                    System.out.println("ERROR: " + e.getMessage());
                 }
             }
 }
