@@ -88,7 +88,7 @@ public class Main {
                     System.out.println(repofield.getText());
                     String repoPath = projectpathfield.getText();
                     String repoName = repofield.getText();
-                    String userName = usernamefield.getText();
+                    String userName = userfield.getText();
                     String token = tokenfield.getText();
                     createLocalRepo(repofield.getText(), projectpathfield.getText());
                     createGitHubRepo();
