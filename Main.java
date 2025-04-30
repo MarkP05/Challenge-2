@@ -107,6 +107,7 @@ public class Main {
                 }
             }
 
+
             public static void createLocalRepo(String name, String path){
                 File project = new File(path, name);
 
@@ -117,12 +118,23 @@ public class Main {
                 createReadMe(name, path);
 
                 try{
-                    ProcessBuilder build = new ProcessBuilder("git", "init");
-                    build.directory(project);
-                    Process p = build.start();
+                    ProcessBuilder init = new ProcessBuilder("git", "init");
+                    init.directory(project);
+                    Process p1 = init.start();
+                    p1.waitFor();
                     System.out.println("Git init made in "+project.getAbsolutePath());
+
+                    ProcessBuilder add = new ProcessBuilder("git", "add", ".");
+                    add.directory(project);
+                    Process p2 = add.start();
+                    p2.waitFor();
+
+                    ProcessBuilder commit = new ProcessBuilder("git", "commit", "-m", "Initial commit");
+                    commit.directory(project);
+                    Process p3 = commit.start();
+                    p3.waitFor();
                 }
-                catch (IOException e){
+                catch (IOException | InterruptedException e){
                     System.out.println("ERROR: "+e.getMessage());
                 }
             }
