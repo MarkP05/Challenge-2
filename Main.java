@@ -48,14 +48,24 @@ public class Main {
         repofield.setBounds(330, 220, 175, 50);
         mainPanel.add(repofield);
 
+        JLabel userLabel = new JLabel("Username:");
+        userLabel.setSize(500,500);
+        userLabel.setLocation(230,55);
+        userLabel.setForeground(Color.white);
+        mainPanel.add(userLabel);
+
+        JTextField userfield = new JTextField();
+        userfield.setBounds(330, 280, 175, 50);
+        mainPanel.add(userfield);
+
         JLabel tokenLabel = new JLabel("Token:");
         tokenLabel.setSize(500,500);
-        tokenLabel.setLocation(230,55);
+        tokenLabel.setLocation(230,115);
         tokenLabel.setForeground(Color.white);
         mainPanel.add(tokenLabel);
 
         JTextField tokenfield = new JTextField();
-        tokenfield.setBounds(330, 280, 175, 50);
+        tokenfield.setBounds(330, 340, 175, 50);
         mainPanel.add(tokenfield);
 
         LogoPanel logoPanel = new LogoPanel();
@@ -65,7 +75,7 @@ public class Main {
         
         JButton submitButton = new JButton("Submit");
         submitButton.setSize(100,50);
-        submitButton.setLocation(345,345);
+        submitButton.setLocation(345,400);
         
                 submitButton.addActionListener(new ActionListener(){
         
