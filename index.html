@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>
+            GitHub Repository Creator
+        </title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <h1>GitHub Repository Creator</h1>
+        <p>Welcome to the GitHub Repository Creator. This is a guide that will allow you to create a GitHub
+            Repository using the GitHub API. This guide will walk you through the steps to set up and run the code
+            that will create a GitHub repository for you.
+        </p>
+        <h2>Step 1: Create a GitHub Personal Access Token</h2>
+        <p>To create a GitHub repository using the GitHub API, you need to create a personal access token. 
+            This token will allow you to authenticate with the GitHub API and perform actions on your behalf.
+            To obtain this token, follow these steps:
+        </p>
+        <ol>
+            <li>Log in to your GitHub account.</li>
+            <li>Go to the top right corner of the home page, click your profile icon so you see the dropdown, and select Settings.</li>
+            <li>In the left sidebar, click on Developer settings. It should be located at the very bottom.</li>
+            <li>In the left sidebar, select Personal access tokens. This should open another dropdown. Select Tokens(classic).</li>
+            <li>In the top right, you should see a small button called Generate new token, and there should be a drop down. Select Generate new token (classic).</li>
+            <li>For Note, enter "GitHub Access". Set the expiration to No Expiration. Under that, check every option you can see.</li>
+            <li>Once all of that has been done, click the green Generate Token button at the bottom of the list.</li>
+            <li>Copy the token that is generated. This is your personal access token. Make sure to keep it safe and do not share it with anyone.</li>
+        </ol>
+        <p>This token will be necessary so you can connect your repository to your GitHub account.</p>
+        <h2>Step 2: Set Up The GUI Project</h2>
+        <ol>
+            <li>Go to the following GitHub repository links: <a href="https://github.com/CSC109/GitSubprocessClient" target="_blank">Git Subprocess Client</a> <a href="https://github.com/CSC109/GitHubApiClient" target="_blank">GitHub API Client</a></li>
+            <li>Clone the two repositories to your local computer. You can put these into temporary folders for now.</li>
+            <li>Open the folder that contains the two repositories. Once Java fully loads the libraries, you will want to create Jar files of each library.</li>
+            <li>To do this, go to the bottom left of each project in VSCode, and in the Java Projects tab, select the arrow pointing right next to the title.</li>
+            <li>This will prompt you to select a main file. Just press enter on your keyboard since it should be on the default already. Doing this will make the jar file. Make sure you save this in a place you can easily find.</li>
+            <li>Repeat this process with the other project you cloned as well. With both jars you will now need to import them into the GUI code.</li>
+            <li>To do this, open the GUI project code, and go to the bottom left where you made the jars. You should see a section in that tab called Referenced Libraries. Click the plus next to that, select the jars from the file location, and add them there. If you did this correctly, they should appear under Referenced Libraries now.</li>
+            <li>This should have created a settings.json file as well. gitignore should automatically ignore this.</li>
+        </ol>
+        <h2>Step 3: Run the GUI</h2>
+        <ol>
+            <li>Open the GUI Project folder.</li>
+            <li>In the top right of the screen, you should see a play button that says Run Java when hovered over. Press that button.</li>
+            <li>This should open a new window with the GUI. In this GUI, it will ask you to enter some information. You will want to create a location where the repository can be made.</li>
+            <li>On your computer, create a file and name it whatever you would like, then open that file and copy down the filepath. Put that filepath into the first box of the GUI.</li>
+            <li>In the second box, enter the name of the repository you would like to create. This can be anything you would like.</li>
+            <li>In the third box, enter the GitHub token you obtained earlier. This GUI will not store your information, so you do not need to worry about your token.</li>
+            <li>Once all three boxes are filled, press the button below. This will create the repository in the folder you chose. You should see a new folder inside that contains a ReadMe.md and a .gitignore file.</li>
+        </ol>
+        <p>
+            Congratulations! You have successfully created a GitHub repository using the GitHub API. You can now use this repository to store your code and collaborate with others.
+        </p>
+    </body>
+        
+</html>
