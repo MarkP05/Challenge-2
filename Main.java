@@ -77,9 +77,9 @@ public class Main {
                     System.out.println(tokenfield.getText());
                     System.out.println(repofield.getText());
                     String repoPath = projectpathfield.getText();
-                    String token = tokenfield.getText();
                     String repoName = repofield.getText();
-                    String userName = "rei";
+                    String userName = usernamefield.getText();
+                    String token = tokenfield.getText();
                     createLocalRepo(repofield.getText(), projectpathfield.getText());
                     createGitHubRepo();
 
@@ -105,9 +105,9 @@ public class Main {
                 System.out.println("Repo Created.");
             }
 
-            public static void createReadMe(String name, String projectPath) {
-                File readme = new File(projectPath, "README.md");
-                String title = "# " + name;
+            public static void createReadMe(String userName, String repoPath) {
+                File readme = new File(repoPath, "README.md");
+                String title = "# " + userName;
                 try (FileWriter fW = new FileWriter(readme)) {
                     fW.write(title);
                     System.out.println("README.md has been created.");
@@ -116,8 +116,8 @@ public class Main {
                 }
             }
 
-            public static void createGitIgnore(String path) {
-                File gitIgnore = new File(path, ".gitignore");
+            public static void createGitIgnore(String repoPath) {
+                File gitIgnore = new File(repoPath, ".gitignore");
                 try (FileWriter fW = new FileWriter(gitIgnore)) {
                     fW.write("*.log\n");
                     fW.write("*.tmp\n");
@@ -130,23 +130,23 @@ public class Main {
                 }
             }
 
-            public static void createLocalRepo(String name, String path) {
-                File project = new File(path, name);
+            public static void createLocalRepo(String userName, String repoPath) {
+                File project = new File(repoPath, userName);
 
                 if (!project.exists()) {
                     project.mkdirs();
                 }
 
                 String projectPath = project.getAbsolutePath();
-                createReadMe(name, projectPath);
-                createGitIgnore(projectPath);
+                createReadMe(userName, repoPath);
+                createGitIgnore(repoPath);
 
                 try {
                     ProcessBuilder init = new ProcessBuilder("git", "init");
                     init.directory(project);
                     Process p1 = init.start();
                     p1.waitFor();
-                    System.out.println("Git init made in " + projectPath);
+                    System.out.println("Git init made in " + repoPath);
 
                     ProcessBuilder add = new ProcessBuilder("git", "add", ".");
                     add.directory(project);
