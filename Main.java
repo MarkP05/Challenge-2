@@ -90,7 +90,7 @@ public class Main {
                     String userName = userfield.getText();
                     String token = tokenfield.getText();
                     String url = "https://github.com/" + userName + "/" + repoName;
-                    projectpathfield.setText(url);
+                    repofield.setText(url);
                     createLocalRepo(repofield.getText(), projectpathfield.getText());
                     //createGitHubRepo();
 
