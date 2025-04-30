@@ -82,14 +82,14 @@ public class Main {
                 public void actionPerformed(ActionEvent e){
                     System.err.println("Sucess!");
                     System.out.println("You clicked the button!");
-                    projectpathfield.setText("Goodbye!");
                     System.out.println(projectpathfield.getText());
-                    System.out.println(tokenfield.getText());
                     System.out.println(repofield.getText());
+                    System.out.println(tokenfield.getText());
                     String repoPath = projectpathfield.getText();
                     String repoName = repofield.getText();
-                    String userName = usernamefield.getText();
+                    String userName = userfield.getText();
                     String token = tokenfield.getText();
+                    projectpathfield.setText("https://github.com/" + userName + "/" + repoName);
                     createLocalRepo(repofield.getText(), projectpathfield.getText());
                     createGitHubRepo();
 
